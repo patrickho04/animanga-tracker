@@ -13,7 +13,7 @@ const AnimeListItem: React.FC<AnimeListItemProps> = ({
   size,
 }) => {
   return (
-    <Link href={`/anime/${animeData.mal_id}`}>
+    <Link href={`/anime/${animeData.mal_id}`} className="w-auto">
       <Image
         src={animeData.images["jpg"].large_image_url}
         alt={animeData.title_english}

@@ -5,13 +5,7 @@ export async function getAnimeQuote() {
     return data
 }
 
-export async function getSeasonAnimes(pageNum: number = 1) {
-    const res = await fetch(`https://api.jikan.moe/v4/seasons/now?page=${pageNum}`)
-    const data = await res.json()
-
-    return data
-}
-
+// Get individual series
 export async function getAnimeById(idNum: number) {
     const res = await fetch(`https://api.jikan.moe/v4/anime/${idNum}`)
     const data = await res.json()
@@ -21,6 +15,14 @@ export async function getAnimeById(idNum: number) {
 
 export async function getMangaById(idNum: number) {
     const res = await fetch(`https://api.jikan.moe/v4/manga/${idNum}`)
+    const data = await res.json()
+
+    return data
+}
+
+// Get categories (24 series each page)
+export async function getSeasonAnimes(pageNum: number = 1) {
+    const res = await fetch(`https://api.jikan.moe/v4/seasons/now?page=${pageNum}`)
     const data = await res.json()
 
     return data
