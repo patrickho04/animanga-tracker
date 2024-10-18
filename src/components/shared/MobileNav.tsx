@@ -12,7 +12,9 @@ import { navLinks } from "@/constants";
 
 const MobileNav = () => {
   return (
-    <div className="flex lg:hidden p-3 justify-end">
+    <div className="flex items-center lg:hidden py-5 justify-between px-8">
+      <h1 className="font-bold text-3xl">animanga tracker</h1>
+
       <Sheet>
         <SheetTrigger asChild>
           <RiMenuLine className="size-12 border-2 rounded-lg p-1" />
@@ -79,8 +81,8 @@ const ListItem = React.forwardRef<
         {...props}
       >
         <div className="text-[22px] font-medium leading-none flex items-center">
-            <RiAddLine className="size-5 mr-2" />
-            {title}
+          <RiAddLine className="size-5 mr-2" />
+          {title}
         </div>
       </a>
     </li>

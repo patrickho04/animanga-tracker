@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
 	container: {
 		screens: {
-			sm: "75vw",
-			xl: "1280px",
+			sm: "85vw",
+			"2xl": "1280px",
 		}
 	},
   	extend: {
