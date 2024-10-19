@@ -6,6 +6,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "../ui/navigation-menu";
 import { navLinks } from "@/constants";
 import { Button } from "../ui/button";
@@ -19,7 +20,7 @@ const Header = () => {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-lg">
+              <NavigationMenuTrigger>
                 Anime
               </NavigationMenuTrigger>
 
@@ -30,15 +31,14 @@ const Header = () => {
                       key={index}
                       title={item.title}
                       href={item.href}
-                    >
-                    </ListItem>
+                    ></ListItem>
                   ))}
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-lg">
+              <NavigationMenuTrigger>
                 Manga
               </NavigationMenuTrigger>
 
@@ -49,11 +49,18 @@ const Header = () => {
                       key={index}
                       title={item.title}
                       href={item.href}
-                    >
-                    </ListItem>
+                    ></ListItem>
                   ))}
                 </ul>
               </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <Link href="/news" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Industry News
+                </NavigationMenuLink>
+              </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
@@ -62,7 +69,7 @@ const Header = () => {
       <Link href="/" className="text-center">
         <h1 className="font-bold text-3xl text-primary">animanga tracker</h1>
       </Link>
-      
+
       <div className="text-right">
         <Button className="font-bold">Sign In</Button>
       </div>

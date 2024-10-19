@@ -13,7 +13,7 @@ const AnimeListItem: React.FC<AnimeListItemProps> = ({
   size,
 }) => {
   return (
-    <Link href={`/anime/${animeData.mal_id}`} className="w-auto">
+    <Link href={`/anime/${animeData.mal_id}`} className="relative">
       <Image
         src={animeData.images["jpg"].large_image_url}
         alt={animeData.title_english}
@@ -21,6 +21,10 @@ const AnimeListItem: React.FC<AnimeListItemProps> = ({
         width={size}
         height={size}
       />
+
+      <div className="absolute inset-0 flex items-baseline text-sm text-white font-semibold px-2 py-1 bg-black bg-opacity-35 opacity-0 hover:opacity-100 transition-all duration-150">
+        {animeData.title_english}
+      </div>
     </Link>
   );
 };

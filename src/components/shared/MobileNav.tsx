@@ -9,11 +9,12 @@ import {
 } from "../ui/accordion";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/constants";
+import Link from "next/link";
 
 const MobileNav = () => {
   return (
     <div className="flex items-center lg:hidden py-5 justify-between px-8">
-      <h1 className="font-bold text-3xl">animanga tracker</h1>
+      <h1 className="font-bold text-3xl text-primary">animanga tracker</h1>
 
       <Sheet>
         <SheetTrigger asChild>
@@ -58,6 +59,12 @@ const MobileNav = () => {
                   </ul>
                 </AccordionContent>
               </AccordionItem>
+
+              <Link href="/news" className="text-3xl font-semibold">
+                <AccordionItem value="news" className="py-4">
+                  Industry News
+                </AccordionItem>
+              </Link>
             </Accordion>
           </nav>
         </SheetContent>
