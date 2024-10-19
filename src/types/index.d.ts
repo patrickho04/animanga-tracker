@@ -1,6 +1,6 @@
-type JSONSchema = {
+type AnimangaCategorySchema = {
     pagination: Pagination;
-    data: AnimeData[];
+    data: AnimeData[] | MangaData[];
 };
 
 type AnimeData = {
@@ -41,6 +41,46 @@ type AnimeData = {
     themes: Demographic[];
     demographics: Demographic[];
 };
+
+type MangaData = {
+    mal_id:          number;
+    url:             string;
+    images:          { [key: string]: Image };
+    approved:        boolean;
+    titles:          Title[];
+    title:           string;
+    title_english:   string;
+    title_japanese:  string;
+    title_synonyms:  string[];
+    type:            MangaDatumType;
+    chapters:        number | null;
+    volumes:         number | null;
+    status:          MangaStatus;
+    publishing:      boolean;
+    published:       Published;
+    score:           number;
+    scored:          number;
+    scored_by:       number;
+    rank:            number;
+    popularity:      number;
+    members:         number;
+    favorites:       number;
+    synopsis:        string;
+    background:      string;
+    authors:         Author[];
+    serializations:  Author[];
+    genres:          Author[];
+    explicit_genres: unknown[];
+    themes:          Author[];
+    demographics:    Author[];
+}
+
+type Author = {
+    mal_id: number;
+    type:   AuthorType;
+    name:   string;
+    url:    string;
+}
 
 type Aired = {
     from: Date;
@@ -102,15 +142,31 @@ enum Source {
     WebManga = "Web manga",
 }
 
+enum MangaStatus {
+    Finished = "Finished",
+    OnHiatus = "On Hiatus",
+    Publishing = "Publishing",
+}
+
 enum Status {
     CurrentlyAiring = "Currently Airing",
     NotYetAired = "Not yet aired",
 }
 
 type Title = {
-    type: TitleType;
+    type: TitleType | MangaTitleType;
     title: string;
 };
+
+enum MangaTitleType {
+    Default = "Default",
+    English = "English",
+    French = "French",
+    German = "German",
+    Japanese = "Japanese",
+    Spanish = "Spanish",
+    Synonym = "Synonym",
+}
 
 enum TitleType {
     Default = "Default",
@@ -133,6 +189,12 @@ type Images = {
     large_image_url: null | string;
     maximum_image_url: null | string;
 };
+
+enum MangaDatumType {
+    LightNovel = "Light Novel",
+    Manga = "Manga",
+    Novel = "Novel",
+}
 
 enum DatumType {
     Ona = "ONA",

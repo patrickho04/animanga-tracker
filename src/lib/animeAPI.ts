@@ -34,3 +34,10 @@ export async function getTopAnimes(pageNum: number = 1) {
 
     return data
 }
+
+export async function getTopMangas(pageNum: number = 1) {
+    const res = await fetch(`https://api.jikan.moe/v4/top/manga?page=${pageNum}`)
+    const data = await res.json()
+
+    return data
+}
