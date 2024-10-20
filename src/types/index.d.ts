@@ -52,7 +52,7 @@ type MangaData = {
     title_english:   string;
     title_japanese:  string;
     title_synonyms:  string[];
-    type:            MangaDatumType;
+    type:            MangaType;
     chapters:        number | null;
     volumes:         number | null;
     status:          MangaStatus;
@@ -190,7 +190,7 @@ type Images = {
     maximum_image_url: null | string;
 };
 
-enum MangaDatumType {
+enum MangaType {
     LightNovel = "Light Novel",
     Manga = "Manga",
     Novel = "Novel",
@@ -213,3 +213,64 @@ type Items = {
     total: number;
     per_page: number;
 };
+
+type AnimangaReview = {
+    mal_id:           number;
+    url:              string;
+    type:             Type;
+    reactions:        Reactions;
+    date:             Date;
+    review:           string;
+    score:            number;
+    tags:             Tag[];
+    is_spoiler:       boolean;
+    is_preliminary:   boolean;
+    episodes_watched?: null;
+    chapters_read?:  null;
+    entry:            Entry;
+    user:             User;
+}
+
+type Entry = {
+    mal_id: number;
+    url:    string;
+    images: { [key: string]: EntryImage };
+    title:  string;
+}
+
+type EntryImage = {
+    image_url:       string;
+    small_image_url: string;
+    large_image_url: string;
+}
+
+type Reactions = {
+    overall:      number;
+    nice:         number;
+    love_it:      number;
+    funny:        number;
+    confusing:    number;
+    informative:  number;
+    well_written: number;
+    creative:     number;
+}
+
+enum Tag {
+    MixedFeelings = "Mixed Feelings",
+    NotRecommended = "Not Recommended",
+    Recommended = "Recommended",
+}
+
+enum Type {
+    Anime = "anime",
+}
+
+type User = {
+    url:      string;
+    username: string;
+    images:   { [key: string]: UserImage };
+}
+
+type UserImage = {
+    image_url: string;
+}

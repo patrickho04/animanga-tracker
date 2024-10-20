@@ -41,3 +41,18 @@ export async function getTopMangas(pageNum: number = 1) {
 
     return data
 }
+
+// Reviews
+export async function getRecentAnimeReviews(pageNum: number = 1) {
+    const res = await fetch(`https://api.jikan.moe/v4/reviews/anime?page=${pageNum}`)
+    const data = await res.json()
+
+    return data
+}
+
+export async function getRecentMangaReviews(pageNum: number = 1) {
+    const res = await fetch(`https://api.jikan.moe/v4/reviews/manga?page=${pageNum}`)
+    const data = await res.json()
+
+    return data
+}
