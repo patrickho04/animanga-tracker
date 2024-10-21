@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/carousel";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
-  getAnimeQuote,
   getRecentAnimeReviews,
   getRecentMangaReviews,
   getSeasonAnimes,
@@ -19,7 +18,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const HomePage = async () => {
-  const quote = await getAnimeQuote();
   const seasonAnimes = (await getSeasonAnimes()).data;
   const topAnimes = (await getTopAnimes()).data;
   const topMangas = (await getTopMangas()).data;
@@ -44,18 +42,8 @@ const HomePage = async () => {
 
   return (
     <div className="container mx-auto lg:px-4">
-      <section
-        id="quote"
-        className="text-center max-w-[700px] mx-auto space-y-1 md:space-y-3 pt-5"
-      >
-        <h1 className="font-bold text-[13px] md:text-3xl">{`"${quote.data.content}"`}</h1>
-        <h2 className="font-bold text-lg md:text-2xl">
-          - {quote.data.character.name}
-        </h2>
-      </section>
-
       <div id="body" className="block lg:flex mt-5">
-        <div className="w-full lg:w-2/3">
+        <div className="w-full lg:w-2/3 space-y-1">
           <section id="current-season-animes">
             <div className="flex items-center justify-between">
               <h3 className="font-bold text-base lg:text-xl">
@@ -75,7 +63,7 @@ const HomePage = async () => {
                 {groupedSeasonAnimes.map((group, index) => (
                   <CarouselItem
                     key={index}
-                    className="flex *:flex-1 gap-3 items-center h-[13.8vw] 2xl:h-[210px]"
+                    className="flex *:flex-1 gap-3 items-center h-[12.5vw] 2xl:h-[210px]"
                   >
                     {group.map((anime: AnimeData) => (
                       <AnimangaCarouselItem
@@ -110,7 +98,7 @@ const HomePage = async () => {
             </ScrollArea>
           </section>
 
-          <section id="top-anime" className="py-2.5">
+          <section id="top-anime">
             <div className="flex items-center justify-between">
               <h3 className="font-bold text-base lg:text-xl">Top Anime</h3>
               <Link
@@ -127,7 +115,7 @@ const HomePage = async () => {
                 {groupedTopAnimes.map((group, index) => (
                   <CarouselItem
                     key={index}
-                    className="flex *:flex-1 gap-3 items-center h-[13.8vw] 2xl:h-[210px]"
+                    className="flex *:flex-1 gap-3 items-center h-[12.5vw] 2xl:h-[210px]"
                   >
                     {group.map((anime: AnimeData) => (
                       <AnimangaCarouselItem
@@ -162,7 +150,7 @@ const HomePage = async () => {
             </ScrollArea>
           </section>
 
-          <section id="top-mangas" className="py-2.5">
+          <section id="top-mangas">
             <div className="flex items-center justify-between">
               <h3 className="font-bold text-base lg:text-xl">Top Mangas</h3>
               <Link
@@ -179,7 +167,7 @@ const HomePage = async () => {
                 {groupedTopMangas.map((group, index) => (
                   <CarouselItem
                     key={index}
-                    className="flex *:flex-1 gap-3 items-center h-[13.8vw] 2xl:h-[210px]"
+                    className="flex *:flex-1 gap-3 items-center h-[12.5vw] 2xl:h-[210px]"
                   >
                     {group.map((manga: MangaData) => (
                       <AnimangaCarouselItem
@@ -219,7 +207,7 @@ const HomePage = async () => {
 
         <aside
           id="recent-reviews"
-          className="lg:w-1/3 lg:ml-5 border-[1px] border-black p-3"
+          className="lg:w-1/3 lg:ml-5 border-[1px] border-black p-3 mt-2 lg:mt-0"
         >
           <section id="anime-recent-reviews" className="h-1/2">
             <div className="flex justify-between">

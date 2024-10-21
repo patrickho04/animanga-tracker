@@ -1,10 +1,3 @@
-export async function getAnimeQuote() {
-    const res = await fetch("https://animechan.io/api/v1/quotes/random")
-    const data = await res.json()
-
-    return data
-}
-
 // Get individual series
 export async function getAnimeById(idNum: number) {
     const res = await fetch(`https://api.jikan.moe/v4/anime/${idNum}`)
@@ -37,6 +30,14 @@ export async function getTopAnimes(pageNum: number = 1) {
 
 export async function getTopMangas(pageNum: number = 1) {
     const res = await fetch(`https://api.jikan.moe/v4/top/manga?page=${pageNum}`)
+    const data = await res.json()
+
+    return data
+}
+
+// Anime Misc
+export async function getAnimeNews(idNum: number, pageNum: number = 1) {
+    const res = await fetch(`https://api.jikan.moe/v4/anime/${idNum}/news?page=${pageNum}`)
     const data = await res.json()
 
     return data
